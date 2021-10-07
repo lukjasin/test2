@@ -370,7 +370,6 @@ class MassAccountMove(models.Model):
     def _action_purchase_order_move_create(self, orders, **kw):
         account_moves = self.env['account.move']
         if orders:
-
             # conditions
             confirm_forcefully = (self.is_auto_confirm and self.confirm_by == 'force')
             confirm_by_policy = (self.is_auto_confirm and self.confirm_by == 'policy')
@@ -379,6 +378,8 @@ class MassAccountMove(models.Model):
             if (confirm_forcefully or (confirm_by_policy and (not is_proforma))):
                 orders.button_confirm()
                 if kw.get('no_create_self_confirm_only', False):
+                    return self.env['account.move']
+                else:
                     orders.action_create_invoice()
                     new_created_moves = orders.invoice_ids.filtered(lambda m: m.state in ('draft', 'posted'))
                     new_created_moves.write({
@@ -532,7 +533,6 @@ class MassAccountMove(models.Model):
 
         # update offset before processing orders
         offset = 0 if ((partner and partner.id or 0) != current_partner_id) else offset
-
         remain_orders_count = len(orders[offset:])
         if partner:
             orders_to_process = orders[offset:(limit + offset)]
