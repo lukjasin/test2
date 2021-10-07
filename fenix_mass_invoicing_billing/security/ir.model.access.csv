@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_mass_account_move_manager,mass.account.move.account_manager,model_mass_account_move,account.group_account_manager,1,1,1,1
+access_mass_account_move_user,mass.account.move.account_user,model_mass_account_move,account.group_account_invoice,1,1,0,0
+access_mass_account_move_history_manager,mass.account.move.history.account_manager,model_mass_account_move_history,base.group_user,1,1,1,1
+mass_account_move_schedule_user,mass.account.move.schedule.account_user,model_mass_account_move_schedule,base.group_user,1,1,1,1

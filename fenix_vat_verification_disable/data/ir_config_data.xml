@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+    <record model="ir.config_parameter" id="disable_vat_verification" forcecreate="False">
+        <field name="key">fenix_vat_verification_disable.disable_vat_verification</field>
+        <field name="value">True</field>
+    </record>
+</odoo>

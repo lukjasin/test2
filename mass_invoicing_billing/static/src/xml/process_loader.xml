@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<templates xml:space="preserve">
+
+    <div t-name="MassInvoice.Process.Loader" id="massinvoice_process_loader">
+        <div class="massinvoice_blockui_spin" style="height: 50px">
+            <img src="/web/static/src/img/spin.png" style="animation: fa-spin 1s infinite steps(12);" alt="Loading..."/>
+        </div>
+        <br/>
+        <div class="massinvoice_blockui_message">
+            <t t-call="MassInvoice.Process.Loader.Message">
+                <t t-set="init" t-value="true"/>
+            </t>
+        </div>
+        <div class="massinvoice_blockui_warning mt16 border border-danger" style="background-color: rgba(0, 0, 0, 0.3) !important;">
+            <small class="font-italic font-weight-bold text-danger">***Do not close / reload browser's session/tab - It can kill process.<br/> Do not re-start process again from another session / tab.</small>
+        </div>
+    </div>
+
+    <t t-name="MassInvoice.Process.Loader.Message">
+        <t t-if="init">
+            <span class="text-white h5">Preparing process...</span>
+        </t>
+        <t t-else="">
+            <span class="text-white h5">Orders processing for <b><t t-esc="processed_partner_count"/></b> <t t-esc="partner_str.toLowerCase()"/> out of <b><t t-esc="partner_count"/></b></span>
+            <hr/>
+            <span class="text-white h6"><b><t t-esc="processed_orders_count"/></b> out of <b><t t-esc="orders_count"/></b> orders processing for <t t-esc="partner_str.toLowerCase()"/> <b><t t-esc="partner.name"/></b>.</span>
+        </t>
+    </t>
+</templates>

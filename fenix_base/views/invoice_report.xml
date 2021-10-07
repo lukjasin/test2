@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Inherit report-->
+
+    <template id="report_invoice_document_fenix" inherit_id="account.report_invoice_document">
+        <xpath expr="//th[@name='th_description']" position="after">
+            <th name="th_description" class="text-left"><span>Date</span></th>
+            <th name="th_description" class="text-left"><span>fnx_Description</span></th>
+        </xpath>
+        <xpath expr="//tbody[hasclass('invoice_tbody')]//td[@name='account_invoice_line_name']" position="after">
+            <td name="pickup_date"><span t-field="line.x_studio_date_of_pickup" class="small text-nowrap"/></td>
+            <td name="collection"><span t-field="line.x_studio_collection" class="small" t-options="{'widget': 'text'}"/></td>
+        </xpath>
+    </template>
+
+</odoo>
