@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Inherit Form view for sales for add custom fields-->
+
+    <record id="view_pickup_details_sales_form" model="ir.ui.view">
+        <field name="name">fenix.sale.order.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <field name="partner_id" position="after">
+                <field name="x_studio_pickup_address"/>
+                <field name="x_studio_pickup_date"/>
+            </field>
+            <xpath expr="//field[@name='order_line']/tree/field[@name='name']" position="after">
+                <field name="x_studio_date_of_pickup"/>
+                <field name="x_studio_collection"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="sales_order_type_tree_view" model="ir.ui.view">
+        <field name="name">sales.order.type.tree.view</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_quotation_tree"/>
+        <field name="arch" type="xml">
+            <field name="state" position="after">
+                <field name="sales_order_type" widget="badge"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>
